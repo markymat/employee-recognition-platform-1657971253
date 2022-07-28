@@ -11,6 +11,21 @@
   </head>
 
   <body>
+  <h4><%= link_to 'Company', root_path %></h4>
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
     <%= yield %>
+    <nav>
+      <h4>Navigation</h4>
+      <ul>
+        <% if !employee_signed_in? %>>
+          <li><%= link_to 'Sign_in', new_employee_session_path %></li>
+          <li><%= link_to 'Sign_up', new_employee_registration_path  %></li>
+            <% else %>
+          <li><%= link_to 'Sign_out', destroy_employee_session_path, method: :delete %></li>
+          <% end %>
+      </ul>  
+    </nav>
+    
   </body>
 </html>
